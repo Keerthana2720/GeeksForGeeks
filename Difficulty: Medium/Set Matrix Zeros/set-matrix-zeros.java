@@ -1,25 +1,26 @@
 class Solution {
     public void setMatrixZeroes(int[][] mat) {
         // code here
-        ArrayList<Integer> row=new ArrayList<>();
-        ArrayList<Integer> col=new ArrayList<>();
-        for(int i=0;i<mat.length;i++){
-            for(int j=0;j<mat[0].length;j++){
-                if(mat[i][j]==0){
-                    row.add(i);
-                    col.add(j);
+        int n=mat.length;
+        int m=mat[0].length;
+        boolean[] rows = new boolean[n];
+        boolean[] cols = new boolean[m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(mat[i][j] == 0){
+                    rows[i] = true;
+                    cols[j] = true;
                 }
             }
         }
-        for(int k=0;k<row.size();k++){
-           for(int i=0;i<mat.length;i++){
-            for(int j=0;j<mat[0].length;j++){
-                if(row.get(k)==i || col.get(k)==j ){
-                    mat[i][j]=0;
-                }
-                    
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(rows[i] || cols[j]){
+                    mat[i][j] =0;
                 }
             }
-        }        
+        }
+        
     }
 }
